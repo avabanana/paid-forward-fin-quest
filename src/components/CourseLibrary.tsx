@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Link } from "react-router-dom";
 import { 
   BookOpen, 
   Clock, 
@@ -158,21 +159,23 @@ const CourseLibrary = () => {
                     </div>
                   </div>
                   
-                  <Button 
-                    className="w-full group-hover:bg-gradient-primary group-hover:text-white transition-all duration-300" 
-                    variant={course.progress > 0 ? "default" : "outline"}
-                  >
-                    {course.progress === 100 ? (
-                      <>Review Course</>
-                    ) : course.progress > 0 ? (
-                      <>Continue Learning</>
-                    ) : (
-                      <>
-                        <Play className="w-4 h-4 mr-2" />
-                        Start Course
-                      </>
-                    )}
-                  </Button>
+                  <Link to={`/course/${course.id}`}>
+                    <Button 
+                      className="w-full group-hover:bg-gradient-primary group-hover:text-white transition-all duration-300" 
+                      variant={course.progress > 0 ? "default" : "outline"}
+                    >
+                      {course.progress === 100 ? (
+                        <>Review Course</>
+                      ) : course.progress > 0 ? (
+                        <>Continue Learning</>
+                      ) : (
+                        <>
+                          <Play className="w-4 h-4 mr-2" />
+                          Start Course
+                        </>
+                      )}
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             );
